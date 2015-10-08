@@ -4,6 +4,8 @@ Bloccit::Application.routes.draw do
 
   resources :advertisements
 
+  resources :questions
+
   get 'about' => 'wlcome#about'
 
   get 'welcome/faq'
