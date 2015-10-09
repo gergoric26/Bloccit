@@ -70,7 +70,7 @@ RSpec.describe AdvertisementsController, type: :controller do
 
     it "redirects to the new advertisement" do
       post :create, advertisement: {title: RandomData.random_sentence, copy: RandomData.random_paragraph, price: RandomData.random_number}
-      expect(assigns(:advertisement)).to redirect_to Advertisement.last
+      expect(response).to redirect_to Advertisement.last
     end
 
   end
