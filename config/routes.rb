@@ -1,6 +1,8 @@
 Bloccit::Application.routes.draw do
 
-  resources :posts
+  resources :topics do
+    resources :posts, except: [:index]
+  end
 
   resources :advertisements
 
