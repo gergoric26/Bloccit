@@ -20,6 +20,8 @@ group :development, :test do
 end
 
 gem 'bootstrap-sass'
+
+gem 'shoulda'
  
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
