@@ -1,10 +1,12 @@
 class User < ActiveRecord::Base
 
   before_save { self.email = email.downcase }
+  before_save { self.name.split(" ")[0] }
 
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   validates :name, length: { minimum: 1, maximum: 100 }, presence: true
+            :name, 
  
   validates :password, presence: true, length: { minimum: 6 }, if: "password_digest.nil?"
   validates :password, length: { minimum: 6 }, allow_blank: true
@@ -18,3 +20,4 @@ class User < ActiveRecord::Base
   has_secure_password
 
 end
+#self.full_name.blank? ? "" : self.full_name.split(" ")[0]
