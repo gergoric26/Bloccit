@@ -6,12 +6,14 @@ Bloccit::Application.routes.draw do
   end
 
   resources :users, only: [:new, :create]
+
+  post 'users/confirm'
   
   resources :advertisements
 
   resources :questions
 
-  get 'about' => 'wlcome#about'
+  get 'about' => 'welcome#about'
 
   get 'welcome/faq'
   get 'welcome/contact'
