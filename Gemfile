@@ -21,6 +21,8 @@ end
 
 gem 'bootstrap-sass'
 
+gem 'bcrypt'
+
 gem 'shoulda'
  
 # Use SCSS for stylesheets
