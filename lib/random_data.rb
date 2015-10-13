@@ -30,4 +30,15 @@ module RandomData
     number.shuffle!
     number[0,rand(1..4)].join.to_i
   end
+
+  def random_name
+    first_name = random_word.capitalize
+    last_name = random_word.capitalize
+    "#{first_name} #{last_name}"
+  end
+ 
+  def random_email
+    "#{random_word}@#{random_word}.#{random_word}"
+  end
+  
 end
