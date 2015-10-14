@@ -6,6 +6,9 @@ class Post < ActiveRecord::Base
   has_many :labelings, as: :labelable
   has_many :labels, through: :labelings
 
+  has_many :ratings, as: :rateable
+  has_many :rates, through: :ratings
+
   default_scope { order('created_at DESC') }
   scope :ordered_by_title, -> { reorder(title: :asc) }
   scope :ordered_by_reverse_order, -> { order(created_at: :asc) }

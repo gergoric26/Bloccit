@@ -1,5 +1,7 @@
 Bloccit::Application.routes.draw do
 
+  resources :rates, only: [:show]
+
   resources :labels, only: [:show]
 
   resources :topics do
