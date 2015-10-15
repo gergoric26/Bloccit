@@ -6,6 +6,7 @@ RSpec.describe Post, type: :model do
 
   let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "helloworld") }
   let(:post) { topic.posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, user: user) }
+  let(:second_post) { Post.new(title: RandomData.random_sentence, body: RandomData.random_paragraph, topic: topic, user: user) }
 
   it { should have_many(:labelings) }
   it { should have_many(:labels).through(:labelings) }
@@ -96,6 +97,13 @@ RSpec.describe Post, type: :model do
       it "associates the vote with the owner of the post" do
         expect(post.votes.first.user).to eq (post.user)
       end
+    end
+  end
+
+  describe "after_create" do
+    it "sends an email to the owner of the post" do
+      expect(FavoriteMailer).to receive(:new_post).with(second_post).and_return(double(deliver_now: true))
+      second_post.save
     end
   end
   
