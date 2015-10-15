@@ -11,6 +11,9 @@ class Post < ActiveRecord::Base
   has_many :labels, through: :labelings
 
   default_scope { order('rank DESC') }
+
+  scope :visible_to, -> (user) { user ? all : joins(:topic).where('topics.public' => true) }
+  
   scope :ordered_by_title, -> { reorder(title: :asc) }
   scope :ordered_by_reverse_order, -> { order(created_at: :asc) }
 
