@@ -7,4 +7,8 @@ class Topic < ActiveRecord::Base
 
   validates :name, length: { minimum: 5 }, presence: true
   validates :description, length: { minimum: 15 }, presence: true
+
+  Topic.all.select(&:public)
+  
+  scope :visible_to, -> (user) { user ? all : where(public: true) }
 end
